@@ -88,6 +88,7 @@ docker run \
   --volume=$mongoDbDir:/data/db \
   --volume=$apPath/mongodb:/mongodb-conf \
   --name=mongodb \
+  -v /etc/localtime:/etc/localtime:ro \
   mongo:$MONGO_VERSION mongod -f /mongodb-conf/mongodb.conf
 
 # Nginx && SSL
@@ -108,6 +109,7 @@ docker run -d -p 80:80 -p 443:443 \
   -v /etc/nginx/vhost.d \
   -v /usr/share/nginx/html \
   -v /var/run/docker.sock:/tmp/docker.sock:ro \
+  -v /etc/localtime:/etc/localtime:ro \
   --label com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy \
   jwilder/nginx-proxy
   # jwilder/nginx-proxy:alpine
@@ -121,6 +123,7 @@ docker run -d \
   -v $apPath/certs:/etc/nginx/certs:rw \
   --volumes-from nginx-proxy \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
+  -v /etc/localtime:/etc/localtime:ro \
   jrcs/letsencrypt-nginx-proxy-companion
 echo "Ran jrcs/letsencrypt-nginx-proxy-companion"
 
@@ -148,5 +151,6 @@ docker run -d \
   -e "LETSENCRYPT_HOST=$restApiHost" \
   -e "LETSENCRYPT_EMAIL=alexgzhou@163.com" \
   -v $apPath:/bundle \
+  -v /etc/localtime:/etc/localtime:ro \
   alexgzhou/alpine:bme319s -e ${entry_file:-"index.js"} -p ${PORT:-80} -m ${mongo_url:-$mongo_docker_url}
 echo "Ran App"
