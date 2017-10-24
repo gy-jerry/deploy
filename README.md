@@ -13,3 +13,16 @@
 ### 配置mongo安全权限：运行命令 $ mongo auth.js --port xxxxx
 ### 注意跨域访问问题：修改config相关网址数组
 ### 注意图片访问地址问题
+
+## 服务器要求
+### ubuntu 16.04 
+### 安装docker 
+参考 http://www.jianshu.com/p/265c1a6833ba
+### 安装node_v6.x
+从ubuntu库安装node以及npm
+sudo apt-get install nodejs-legacy
+sudo apt-get install npm
+安装node版本管理包n
+sudo npm install -g n
+调整node版本
+sudo n --lts
