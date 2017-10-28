@@ -29,6 +29,7 @@ sudo n --lts
 
 ### 自动任务设置
 $ sudo vim /etc/crontab
+
 */5 *   * * *   bme319  bash /codedir/cdmisRestAPI/mongoshellscripts/scheduleCounselAutoEnd.sh
 0  0    * * *   bme319  bash /codedir/cdmisRestAPI/mongoshellscripts/scheduleReport.sh
 
