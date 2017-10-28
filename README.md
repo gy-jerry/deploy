@@ -26,3 +26,9 @@ sudo apt-get install npm
 sudo npm install -g n
 调整node版本
 sudo n --lts
+
+### 自动任务设置
+$ sudo vim /etc/crontab
+*/5 *   * * *   bme319  bash /codedir/cdmisRestAPI/mongoshellscripts/scheduleCounselAutoEnd.sh
+0  0    * * *   bme319  bash /codedir/cdmisRestAPI/mongoshellscripts/scheduleReport.sh
+
